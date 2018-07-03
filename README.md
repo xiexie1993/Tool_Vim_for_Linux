@@ -69,3 +69,11 @@
 ## 参考资料
 
 + [Linux 包管理基础：apt、yum、dnf 和 pkg](https://linux.cn/article-8782-1.html)
+
++ [在 Vim 中使用 Git 的插件: Fugitive](http://www.gnailuy.com/linux/2014/12/13/using-git-in-vim-with-fugitive/)
+
++ [vim比较目录diff](https://blog.csdn.net/littlewhite1989/article/details/45312081)
+
++ [nerdtree-git-plugin插件](https://github.com/Xuyuanp/nerdtree-git-plugin)
+
++ [每日vim插件--显示git diff:GitGutter.vim](http://ju.outofmemory.cn/entry/72482)

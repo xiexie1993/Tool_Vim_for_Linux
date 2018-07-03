@@ -273,6 +273,18 @@ nmap <F6> :NERDTreeToggle<cr>
 "" let NERDTreeIgnore=['\.pyc','\~$','\.swp']
 "" " 显示书签列表
 "" let NERDTreeShowBookmarks=1
+""当NERDTree为剩下的唯一窗口时自动关闭
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+""修改树的显示图标
+let g:NERDTreeDirArrowExpandable = '►'
+let g:NERDTreeDirArrowCollapsible = '▼'
+let NERDTreeAutoCenter=1
+" 显示行号
+let NERDTreeShowLineNumbers=1
+" 是否显示隐藏文件
+"let NERDTreeShowHidden=1
+" 在终端启动vim时，共享NERDTree
+let g:nerdtree_tabs_open_on_console_startup=1
 
 
 """"""""""""  在 NERDTree 中显示 git 信息插件：nerdtree-git-plugin
@@ -587,6 +599,118 @@ let g:ctrlp_working_path_mode = 'ra'
     "         格11 | 格12| 格13
     "         格21 | 格22| 格23
 
+""""""""""""  编写html的超级利器emmet插件:emmet
+""""""""""""  前提：     下载：https://github.com/mattn/emmet-vim
+" let g:user_emmet_mode='n'    "  只启用普通模式功能       only enable normal mode functions.
+" let g:user_emmet_mode='inv'  "  启用所有功能，等于       enable all functions, which is equal to
+let g:user_emmet_mode='a'    "  在所有模式下启用所有功能 enable all function in all mode.
+
+" 只为html / css启用
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
+
+" let g:user_emmet_leader_key='<C-Z>'  " 重新定义触发键( 默认的<C-Y>)
+
+""" 使用：
+    " Emmet的基本用法：先写简写形式，然后用"<Ctrl+y>,"将其转成HTML代码
+    " 基本规则：
+    " （1） E 代表HTML标签
+    " （2） E#id 代表标签E有id属性
+    " （3） E.class 代表E有class属性
+    " （4） E[attr=foo] 代表某个特定属性
+    " （5） E{info} 代表标签E包含的内容是info
+    " （6） E>N 代表N是E的子元素
+    " （7） E+N 代表N是E的同级元素
+    " （8） E^N 代表N是E的上级元素
+    "  案例1：
+    "      vim index.html 新建一个文件
+    "      输入模式下输入  html:5
+    "      然后按住Ctrl+y 放开再单独按","结果就插入基本的HTML代码
+    "                     html:5 or ! for an HTML5 doctype
+    "                     html:xt for an XHTML transitional doctype
+    "                     html:4s for an HTML4 strict doctype
+    "  案例2：
+    "      输入模式下输入 p#foo
+    "      然后按住Ctrl+y 放开再单独按","(逗号) 结果就插入基本的HTML代码 <p id="foo"></p>
+    "  案例3：
+    "      输入模式下输入 p.bar#foo
+    "      然后按住Ctrl+y 放开再单独按","(逗号) 结果就插入基本的HTML代码 <p class="bar" id="foo"></p>
+    "  案例4：
+    "      输入模式下输入 h1{foo}
+    "      然后按住Ctrl+y 放开再单独按","(逗号) 结果就插入基本的HTML代码 <h1>foo</h1>
+    "  案例5：
+    "      输入模式下输入 a[href=#]
+    "      然后按住Ctrl+y 放开再单独按","(逗号) 结果就插入基本的HTML代码 <a href="#"></a>
+    "  案例6：
+    "      输入模式下输入 h1+h2
+    "      然后按住Ctrl+y 放开再单独按","(逗号)结果就插入基本的HTML代码
+    "                                                     <h1><h1>
+    "                                                     <h2><h2>
+    "  案例7：
+    "      输入模式下输入 (.foo>h1)+(.bar>h2)
+    "      然后按住Ctrl+y 放开再单独按","(逗号)结果就插入基本的HTML代码
+    "                                                     <div class="foo">
+    "                                                       <h1></h1>
+    "                                                     </div>
+    "                                                     <div class="bar">
+    "                                                       <h2></h2>
+    "                                                     </div>
+    "  案例8：
+    "      输入模式下输入 .ul>li*3
+    "      然后按住Ctrl+y 放开再单独按","(逗号)结果就插入基本的HTML代码
+    "                                                     <ul>
+    "                                                       <li></li>
+    "                                                       <li></li>
+    "                                                       <li></li>
+    "                                                     </ul>
+    "  案例9：
+    "      输入模式下输入 .item
+    "      然后按住Ctrl+y 放开再单独按","(逗号)结果就插入基本的HTML代码
+    "                                 若父级是<div>，则插入    <div class="item"></div>
+    "                                 若父级是<ul>， 则插入    <li class="item"></li>
+    "                                 注：   li for ul and ol
+    "                                        tr for table, tbody, thead and tfoot
+    "                                        td for tr
+    "                                        option for select and optgroup
+    "  具体教程参考：
+    "      http://coding.smashingmagazine.com/2013/03/26/goodbye-zen-coding-hello-emmet/
+    "      http://www.360doc.com/content/16/0923/15/10087950_593063597.shtml
+
+
+""""""""""""  修改内容和git原始内容的对比插件:Fugitive 
+""""""""""""  前提：安装 https://github.com/tpope/vim-fugitive.git
+
+"" 作用：看修改内容和原始内容的对比。
+
+"" 以往看这种对比内容，要先退出或在 Vim 中 :sh，然后在 Shell 里 git diff 看传统格式的 differ，或者使用 git difftool 命令查看 vimdiff 可视化后的 differ。
+"" 安装完成后，退出 Vim 重新打开Git工作区正在编辑的文件，命令 :Gdiff， 就可以方便的查看本次修改和仓库里代码的改动了。
+
+""""""""""""  显示 git 管理的项目文件变更状态插件:nerdtree-git-plugin插件 
+""""""""""""  前提：安装 nerdtree
+
+" 在各diff之间跳转,自定义mapping
+" nmap ]h <Plug>GitGutterNextHunk
+" nmap [h <Plug>GitGutterPrevHunk
+
+" let g:NERDTreeShowIgnoredStatus = 1
+"" 注该插件bug暂未使用
+
+""""""""""""  显示 显示git的文件diff状态插件:vim-gitgutter
+""""""""""""  前提：系统安装了git
+
+""" 使用：
+    "  波浪线表示该行相比HEAD修改过，
+    "  红色的减号表示这里删除了一行，
+    "  绿色的+号表示这些行都是新增的
+
+    " Gitgutter还支持在每个diff区块之间跳转（像图中就分了3块）。默认快捷键为[c和]c。可以非常方便地在各diff之间跳转了。
+    " 当然必须可以自定义mapping：
+    " nmap ]h <Plug>GitGutterNextHunk
+    " nmap [h <Plug>GitGutterPrevHunk
+
+    " Gitgutter不仅能显示这些git diff，还能暂存<Leader>hs和回退<Leader>hr修改。
+    " 同样支持自定义mapping： <div class=’bogus-wrapper’>
+    " let g:gitgutter_diff_args = '-w'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 ""
