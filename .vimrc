@@ -1044,6 +1044,19 @@ autocmd BufEnter  *  call  DoWordComplete()     " 自动加载补全模式
 ""          D        删除.swp文件
 ""          vim －r  文件名来恢复未保存的内容
 ""
+""       i、对比文件
+""          方式一：
+""              step1: 执行vim A/file1
+""              step2: 在normal模式下输入:vertical diffsplit B/file1
+""          方式二：
+""              vimdiff A/file1 B/file1
+""          方式三：
+""              vim -d A/file1 B/file2
+""          方式四：新标签比较文件diff
+""              step1: 在normal模式下执行:tabnew A/file2
+""              step2: 在normal模式下执行:vertical diffsplit B/file1
+""
+""
 ""-----------------------------------------------------------------------------"
 "" 三、窗口操作
 ""
