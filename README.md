@@ -77,3 +77,7 @@
 + [nerdtree-git-plugin插件](https://github.com/Xuyuanp/nerdtree-git-plugin)
 
 + [每日vim插件--显示git diff:GitGutter.vim](http://ju.outofmemory.cn/entry/72482)
+
++ [DirDiff](https://www.vim.org/scripts/script.php?script_id=102 )
+
++ [will133/vim-dirdiff](https://github.com/will133/vim-dirdiff)

@@ -712,6 +712,15 @@ autocmd FileType html,css EmmetInstall
     " 同样支持自定义mapping： <div class=’bogus-wrapper’>
     " let g:gitgutter_diff_args = '-w'
 
+""""""""""""  文件夹对比插件:vim-dirdiff插件 
+""""""""""""  前提：
+"" 插件下载地址
+"" [DirDiff](https://www.vim.org/scripts/script.php?script_id=102 )
+"" 或
+"" [will133/vim-dirdiff](https://github.com/will133/vim-dirdiff)
+""" 使用：
+    " :DirDiff <dir1> <dir2>
+    
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 ""
 "" 自定义函数
