@@ -19,6 +19,7 @@ set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936  " 该选项是vim写�
 set termencoding=utf-8                                    " 该选项代表输出到客户终端（Term）采用的编码类型,默认空值，也就是输出到终端时不进行编码转换
 set encoding=utf-8                                        " 该选项使用于缓冲的文本(你正在编辑的文件)，寄存器，Vim 脚本文件等等
 
+set t_Co=256                  " 使vim支持256色
 set noswapfile                " 禁止vim产生交换文件
 
 " 关闭菜单栏和工具栏
