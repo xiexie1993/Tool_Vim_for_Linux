@@ -52,18 +52,48 @@
 + e、将.vimrc并复制到当前账户的根目录下（如：CentOS 的 /[用户名]/home 或 CentOS 的 /root ）
 
 > 注：（出现错误记录及处理方法）
+> 问题1
+~~~
+    + 错误现象描述：处理 WinEnter 自动命令 "*" 时发生错误: E488: 多余的尾部字符: cursorcolumn^M
+
+    + 原因：Vim 在处理时内部把所有按照识别出的 ff 所对应的换行符都转换成了 \0，正则中以 \n 匹配
+    + 解决方案：安装dos2unix将配置文件进行处理
+        + step1: sudo yum install dos2unix
+        + step2: sudo dos2unix ~/.vimrc ~/.vimrc
+    
+    + 参考资料：
+        + [求助vim诡异的^M问题](https://zhidao.baidu.com/question/436885572532353484.html)
+        + [VIM的配置文件求助](http://www.phpfans.net/ask/fansa1/1613756603.html)
 
 ~~~
-错误现象描述：处理 WinEnter 自动命令 "*" 时发生错误: E488: 多余的尾部字符: cursorcolumn^M
-原因：Vim 在处理时内部把所有按照识别出的 ff 所对应的换行符都转换成了 \0，正则中以 \n 匹配
-处理：安装dos2unix将配置文件进行处理
-      step1: sudo yum install dos2unix
-      step2: sudo dos2unix ~/.vimrc ~/.vimrc
 
-参考资料：
-[求助vim诡异的^M问题](https://zhidao.baidu.com/question/436885572532353484.html)
-[VIM的配置文件求助](http://www.phpfans.net/ask/fansa1/1613756603.html)
+> 问题2：解决vim E492: Not an editor command: ^M
+~~~
+    + 原因解析：而*nix的文件换行符为\n，但windows却非要把\r\n作为换行符，所以，vim在解析从windows拷贝到mac的的vimrc时，因为遇到无法解析的\r，所以报错。 
+    + 解决办法:
+        +方案一：用vim的神替换功能处理 ，打开 sudo vim ~/.vimrc 执行  :%s/^M//gc
+        +方案一：将文件彻底转换为unix格式， 打开 sudo vim ~/.vimrc 执行 :set fileformat=unix
+    + 参考资料
+        + [解决vim E492: Not an editor command: ^M](https://blog.csdn.net/gatieme/article/details/50541642)
+~~~
 
+> 问题3： 主体风格显示问题
+~~~
+    + 原因解析：一般的Linux发行版默认的终端都是16色的，但事实上几乎所有的终端都支持256色终端。
+    + 解决办法:
+        +方案一：打开 sudo vim ~/.vimrc 添加 set t_Co " 使vim支持256色
+    + 参考资料
+        + [linux 开启终端256色支持](https://www.cnblogs.com/274914765qq/archive/2015/11/08/4947372.html)
+~~~
+
+> 问题4：
+~~~
+    + 描述
+        [root@bogon ~]# vim .vimrc 
+        Taglist: Exuberant ctags (http://ctags.sf.net) not found in PATH. Plugin is not loaded.
+        请按 ENTER 或其它命令继续
+    + 解决方案：
+        + 安装ctags ： yum install ctags
 ~~~
 
 ## 参考资料

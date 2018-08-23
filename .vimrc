@@ -11,7 +11,7 @@
 "" 基础设置
 ""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" set fileencoding=gb18030 ：
+" set fileencoding=gb18030 
 " set fileencodings=utf-8,gb18030,utf-16,big5
 " set fencs=utf-8,gbk    " 打开一个文件时，尝试utf8,gbk两种编码，
 
