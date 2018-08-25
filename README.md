@@ -23,7 +23,7 @@
 
 ./          
 ├── .vimrc                                     用户自定义配置文件（内含有使用说明）
-├── .vim.zip                                   插件包
+├── .vim                                       插件包
 ├── Markdown-Preview-Plus-Dz特别版_v104.crx    chrome核心的浏览器的Markdown阅读插件
 ├── Markdown-Preview-Plus_v0.6.5.crx           chrome核心的浏览器的Markdown阅读插件
 └── README.md                                  自述文件（部署到生成环境后删除）
@@ -43,7 +43,7 @@
 
 + b、进行配置 在当前账户的根目录下（如：CentOS 的 /[用户名]/home 或 CentOS 的 /root）下建立.vim 文件夹
 
-+ c、将.vim.zip解压到 当前用户根目录下（如：CentOS 的 /[用户名]/home 或 CentOS 的 /root ）
++ c、将.vim压缩载解压或复制到 当前用户根目录下（如：CentOS 的 /[用户名]/home 或 CentOS 的 /root ）
 
 + d、安装ctags
     * CentOS 执行： sudo yum -y install ctags
